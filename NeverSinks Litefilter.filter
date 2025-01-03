@@ -52,28 +52,30 @@ MinimapIcon 0 Red Star
 #--------------------------
 # Gold
 #--------------------------
-
-Show
-AreaLevel >= 70
-StackSize >= 1000
+Hide
 BaseType == "Gold"
-SetTextColor 255 255 255
-SetBorderColor 255 255 255
-PlayEffect Orange Temp
 
-Show
-AreaLevel < 70
-StackSize >= 500
-BaseType == "Gold"
-SetTextColor 255 255 255
-SetBorderColor 255 255 255
-PlayEffect Orange Temp
+# Show
+# AreaLevel >= 70
+# StackSize >= 1000
+# BaseType == "Gold"
+# SetTextColor 255 255 255
+# SetBorderColor 255 255 255
+# PlayEffect Orange Temp
 
-Show
-BaseType == "Gold"
-SetTextColor 180 180 180
-SetBorderColor 0 0 0 255
-SetBackgroundColor 0 0 0 180
+# Show
+# AreaLevel < 70
+# StackSize >= 500
+# BaseType == "Gold"
+# SetTextColor 255 255 255
+# SetBorderColor 255 255 255
+# PlayEffect Orange Temp
+
+# Show
+# BaseType == "Gold"
+# SetTextColor 180 180 180
+# SetBorderColor 0 0 0 255
+# SetBackgroundColor 0 0 0 180
 
 #--------------------------
 # Uncut Gems
@@ -112,14 +114,14 @@ MinimapIcon 1 Cyan Triangle
 SetFontSize 40
 
 # Gems up to level 18 in maps don't get a special highlight
-Show
+Hide
 ItemLevel <= 18
 BaseType "Uncut Skill Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
 SetFontSize 35
 
-Show
+Hide
 BaseType "Uncut Support Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
@@ -191,9 +193,12 @@ PlayAlertSound 2 300
 
 # Special B Tier - Any Runes and Charms
 Show 
-BaseType " Rune" " Charm"
+BaseType " Rune"
 SetTextColor 0 240 190
 PlayEffect Cyan Temp
+
+Hide
+BaseType " Charm"
 
 #--------------------------
 # Scroll of Wisdom High Level Hiding
@@ -245,7 +250,7 @@ SetFontSize 40
 # Currency Tier B: Regal, Vaal ...
 Show
 Class "Currency"
-BaseType "Gemcutter's Prism" "Vaal Orb" "Chaos Orb" "Lesser Jeweller's Orb" "Regal Orb" "Artificer's Orb" "Glassblower's Bauble" "Orb of Alchemy"
+BaseType "Gemcutter's Prism" "Vaal Orb" "Chaos Orb" "Regal Orb" "Artificer's Orb" "Glassblower's Bauble" "Orb of Alchemy"
 SetTextColor 255 207 132
 SetBorderColor 255 207 132
 SetBackgroundColor 76 51 12
@@ -253,6 +258,15 @@ PlayAlertSound 2 300
 PlayEffect White
 MinimapIcon 2 White Circle
 SetFontSize 40
+
+Show
+Class "Currency"
+BaseType "Lesser Jeweller's Orb"
+SetTextColor 255 207 132
+SetBorderColor 255 207 132
+SetBackgroundColor 76 51 12
+PlayEffect White
+MinimapIcon 2 White Circle
 
 Show
 Class "Currency"
@@ -291,17 +305,20 @@ SetFontSize 40
 Show
 AreaLevel >= 70
 Class "Currency"
-BaseType "Arcanist's Etcher" "Armourer's Scrap" "Blacksmith's Whetstone" "Orb of Augmentation" "Orb of Transmutation" "Regal Shard" "Chance Shard"
+BaseType "Arcanist's Etcher" "Armourer's Scrap" "Blacksmith's Whetstone" "Regal Shard" "Chance Shard"
 SetTextColor 220 190 132
 SetFontSize 35
 
 # Currency Tier C: Vaal, Chaos, Exalt, Exotic
 Show
 Class "Currency"
-BaseType "Arcanist's Etcher" "Armourer's Scrap" "Blacksmith's Whetstone" "Orb of Augmentation" "Orb of Transmutation" "Regal Shard" "Chance Shard"
+BaseType "Arcanist's Etcher" "Armourer's Scrap" "Blacksmith's Whetstone" "Regal Shard" "Chance Shard"
 SetTextColor 220 190 132
 MinimapIcon 2 Grey Circle
 SetFontSize 35
+
+Hide
+BaseType "Orb of Augmentation" "Orb of Transmutation"
 
 Show
 Class "Currency"
@@ -348,7 +365,7 @@ MinimapIcon 1 Purple Square
 SetFontSize 45
 
 Show
-BaseType "Barya" "Ultimatum"
+BaseType "Ultimatum"
 SetTextColor 255 207 255
 SetBorderColor 255 207 255
 SetBackgroundColor 65 20 80
@@ -357,12 +374,16 @@ PlayEffect Grey
 MinimapIcon 1 Grey Square
 SetFontSize 40
 
+Hide
+BaseType "Barya"
+
 #--------------------------
 # Waystones
 #--------------------------
 
 Show
-WaystoneTier < 10
+WaystoneTier < 14
+WaystoneTier >= 9
 AreaLevel > 77
 BaseType "Waystone"
 Rarity <= Rare
@@ -370,17 +391,18 @@ SetTextColor 255 255 255
 SetBorderColor 255 255 255
 SetFontSize 35
 
-Show
-WaystoneTier < 5
-AreaLevel > 74
-BaseType "Waystone"
-Rarity <= Rare
-SetTextColor 255 255 255
-SetBorderColor 255 255 255
-SetFontSize 35
+# Show
+# WaystoneTier < 5
+# AreaLevel > 74
+# BaseType "Waystone"
+# Rarity <= Rare
+# SetTextColor 255 255 255
+# SetBorderColor 255 255 255
+# SetFontSize 35
 
 Show
 BaseType "Waystone"
+WaystoneTier >= 15
 Rarity <= Rare
 SetTextColor 255 255 255
 SetBorderColor 255 255 255
@@ -388,6 +410,10 @@ PlayAlertSound 4 300
 PlayEffect White
 MinimapIcon 1 White Square
 SetFontSize 40
+
+Hide
+BaseType "Waystone"
+WaystoneTier < 9
 
 #--------------------------
 # Value Rares
@@ -406,7 +432,7 @@ MinimapIcon 1 Yellow Diamond
 # Rings, Amulets, Belts
 #--------------------------
 
-Show
+Hide
 Rarity Normal
 Class "Rings" "Amulets" "Belts"
 SetFontSize 40
@@ -420,11 +446,11 @@ SetFontSize 40
 # Salvagable Items
 #--------------------------
 
-Show
-Sockets > 0
-Rarity Normal
-SetBorderColor 200 200 200
-SetFontSize 35
+# Show
+# Sockets > 0
+# Rarity Normal
+# SetBorderColor 200 200 200
+# SetFontSize 35
 
 Show
 Quality > 0
@@ -432,11 +458,11 @@ Rarity Normal
 SetBorderColor 200 200 200
 SetFontSize 35
 
-Show
-Sockets > 0
-Rarity Magic
-SetBorderColor 0 0 200
-SetFontSize 35
+# Show
+# Sockets > 0
+# Rarity Magic
+# SetBorderColor 0 0 200
+# SetFontSize 35
 
 Show
 Quality > 0
@@ -450,11 +476,11 @@ SetFontSize 35
 
 ## Uncomment this rule to hide low level rares in high level zones
 
-# Hide
-# Rarity Rare
-# DropLevel < 50
-# AreaLevel > 72
-# SetFontSize 35
+Hide
+Rarity Rare
+DropLevel < 50
+AreaLevel > 72
+SetFontSize 35
 
 Show
 Rarity Rare
@@ -515,10 +541,10 @@ Class "Body Armours" "Helmets" "Boots" "Gloves" "Shields" "Foci" "Quivers" "One 
 ### OPTIONAL RULE: Hide random bases
 # REMOVE THE BASES YOU --DO-- WANT TO SEE BEFORE SETTING TO HIDE
 
-# Hide
-# Rarity <= Magic
-# Class "Flasks" "Body Armours" "Helmets" "Boots" "Gloves" "Shields" "Foci" "Quivers" "One Hand Maces" "Two Hand Maces" "Staves" "Quarterstaves" "Bows" "Crossbows" "Wands" "Sceptres"
-# AreaLevel >= 65
+Hide
+Rarity < Magic
+Class "Flasks" "Body Armours" "Helmets" "Boots" "Gloves" "Shields" "Foci" "Quivers" "One Hand Maces" "Two Hand Maces" "Staves" "Quarterstaves" "Bows" "Crossbows" "Wands" "Sceptres"
+AreaLevel >= 65
 
 ### OPTIONAL RULE: REDUCES BACKGROUND ON LOW LEVEL BASES
 
